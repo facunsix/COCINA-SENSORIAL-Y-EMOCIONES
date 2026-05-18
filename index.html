@@ -11,42 +11,21 @@
             box-sizing: border-box;
         }
 
-body {
-    font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, 'Poppins', sans-serif;
+        body {
+            font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #ffcc80, #ffb347, #ff7043, #ffd54f, #aed581, #8bc34a, #aed581);
+            background-size: 500% 500%;
+            min-height: 100vh;
+            animation: softGradient 30s ease infinite;
+            color: #2e241f;
+            scroll-behavior: smooth;
+        }
 
-    background: linear-gradient(
-        -45deg,
-        #ffcc80,
-        #ffb347,
-        #ff7043,
-        #ffd54f,
-        #aed581,
-        #8bc34a,
-        #aed581
-    );
-
-    background-size: 500% 500%;
-    min-height: 100vh;
-
-    animation: softGradient 30s ease infinite;
-
-    color: #2e241f;
-    scroll-behavior: smooth;
-}
-
-@keyframes softGradient {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
+        @keyframes softGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
         .container {
             max-width: 650px;
@@ -61,12 +40,13 @@ body {
         }
 
         .logo-wrapper {
-            background: rgba(255, 245, 225, 0.75);
+            background: rgba(255, 245, 225, 0.4);
             border-radius: 80px;
             padding: 20px 15px;
             margin-bottom: 1.5rem;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            backdrop-filter: blur(3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,200,0.5);
         }
 
         .logo-img {
@@ -74,7 +54,7 @@ body {
             width: 280px;
             height: auto;
             border-radius: 50px;
-            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1));
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15));
         }
 
         .buttons {
@@ -91,40 +71,41 @@ body {
             padding: 0.8rem 2rem;
             border: none;
             border-radius: 60px;
-            background: #ffb347;
+            background: rgba(255, 180, 70, 0.85);
+            backdrop-filter: blur(4px);
             color: #2c1c0f;
-            box-shadow: 0 6px 0 #a45d2e;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             cursor: pointer;
             transition: 0.1s linear;
             font-family: inherit;
             letter-spacing: 1px;
             min-width: 140px;
+            border: 1px solid rgba(255,255,200,0.6);
         }
 
         .btn:active {
             transform: translateY(3px);
-            box-shadow: 0 2px 0 #a45d2e;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         .btn-juegos {
-            background: #5fa7f0;
-            box-shadow: 0 6px 0 #2c4b7a;
+            background: rgba(95, 167, 240, 0.85);
             color: white;
         }
 
         .btn-proyecto {
-            background: #f4a261;
-            box-shadow: 0 6px 0 #b4622a;
+            background: rgba(244, 162, 97, 0.85);
         }
 
+        /* SECCIONES CON EFECTO CRISTAL */
         .section {
-            background: rgba(255, 255, 245, 0.94);
+            background: rgba(255, 248, 235, 0.7);
+            backdrop-filter: blur(12px);
             border-radius: 48px;
             padding: 1.8rem 1.5rem;
             margin: 2rem 0;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
-            backdrop-filter: blur(2px);
-            border: 1px solid #ffddb0;
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255,255,255,0.6);
+            border: 1px solid rgba(255, 220, 150, 0.7);
         }
 
         .section h2 {
@@ -145,17 +126,20 @@ body {
         }
 
         .highlight {
-            background: #fff0dd;
+            background: rgba(255, 240, 220, 0.8);
+            backdrop-filter: blur(4px);
             border-radius: 28px;
             padding: 1rem;
             margin: 1rem 0;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05), 0 4px 8px rgba(0,0,0,0.05);
         }
 
         .frase-final {
             font-style: italic;
             font-size: 1.35rem;
             text-align: center;
-            background: #fce7cb;
+            background: rgba(252, 231, 203, 0.8);
+            backdrop-filter: blur(4px);
             padding: 1rem;
             border-radius: 50px;
             margin: 1.2rem 0 0.5rem;
@@ -163,7 +147,7 @@ body {
             font-weight: 500;
         }
 
-        /* Galería con grid y efecto zoom (ligthbox simple) */
+        /* GALERÍA */
         .galeria {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -176,17 +160,18 @@ body {
             aspect-ratio: 1 / 1;
             object-fit: cover;
             border-radius: 28px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
             transition: transform 0.2s ease;
-            border: 3px solid #ffcd94;
+            border: 2px solid rgba(255,205,150,0.8);
             cursor: pointer;
+            backdrop-filter: blur(2px);
         }
 
         .galeria img:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
         }
 
-        /* MODAL PARA VER IMAGEN ORIGINAL */
+        /* MODAL IMAGEN */
         .modal-imagen {
             position: fixed;
             top: 0;
@@ -210,14 +195,20 @@ body {
             border: 3px solid #ffb882;
         }
 
-        /* juegos */
+        /* TARJETAS DE JUEGOS CON EFECTO CRISTAL */
         .juego-card {
-            background: #fff9f0;
+            background: rgba(255, 249, 240, 0.75);
+            backdrop-filter: blur(12px);
             border-radius: 40px;
             padding: 1.5rem;
             margin-top: 1.8rem;
-            box-shadow: 0 12px 22px rgba(0,0,0,0.08);
-            border-left: 12px solid #ff9f4a;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255,255,240,0.8);
+            border: 1px solid rgba(255, 220, 150, 0.8);
+            transition: transform 0.2s;
+        }
+
+        .juego-card:hover {
+            transform: translateY(-3px);
         }
 
         .pregunta {
@@ -235,7 +226,8 @@ body {
         }
 
         .opcion-boton {
-            background: #fadbb1;
+            background: rgba(250, 219, 177, 0.9);
+            backdrop-filter: blur(4px);
             padding: 0.5rem 1.2rem;
             border-radius: 40px;
             font-size: 0.9rem;
@@ -243,17 +235,20 @@ body {
             font-weight: 500;
             cursor: pointer;
             transition: 0.1s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
         .resultado-juego {
-            background: #e9f5e1;
+            background: rgba(233, 245, 225, 0.9);
+            backdrop-filter: blur(4px);
             padding: 0.7rem;
             border-radius: 24px;
             margin-top: 1rem;
             font-weight: 500;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
         }
 
-        /* Memory mejorado: grid */
+        /* MEMORY CRISTAL */
         .memory-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -262,44 +257,49 @@ body {
         }
 
         .memory-card {
-            background: #f0bc7c;
+            background: rgba(240, 188, 124, 0.85);
+            backdrop-filter: blur(8px);
             padding: 1rem 0.2rem;
             text-align: center;
             border-radius: 28px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.15s;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transition: 0.2s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             font-size: 0.9rem;
             word-break: break-word;
             min-height: 85px;
             display: flex;
             align-items: center;
             justify-content: center;
-            backface-visibility: hidden;
+            border: 1px solid rgba(255,245,200,0.6);
         }
 
         .memory-card.flipped {
-            background: #fff2df;
+            background: rgba(255, 242, 223, 0.95);
             color: #a1491a;
             transform: scale(0.98);
         }
 
         .memory-card.matched {
-            background: #9bc48b;
+            background: rgba(155, 196, 139, 0.9);
             color: #1f4f1a;
             cursor: default;
             transform: scale(1);
+            backdrop-filter: blur(4px);
         }
 
         .rueda-boton {
-            background: #ffb882;
+            background: rgba(255, 184, 130, 0.9);
+            backdrop-filter: blur(4px);
             display: inline-block;
             padding: 10px 20px;
             border-radius: 60px;
             margin: 8px 6px;
             font-weight: bold;
             border: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
         }
 
         footer {
@@ -308,9 +308,10 @@ body {
             color: #5d3a1f;
             font-size: 0.8rem;
             font-weight: 500;
+            text-shadow: 0 1px 1px rgba(255,255,200,0.5);
         }
 
-        /* Botón flotante */
+        /* BOTÓN FLOTANTE + MODAL GRANDE Y PERSISTENTE */
         .floating-btn {
             position: fixed;
             bottom: 25px;
@@ -324,7 +325,7 @@ body {
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             cursor: pointer;
             z-index: 1000;
             transition: 0.2s;
@@ -335,23 +336,46 @@ body {
             position: fixed;
             bottom: 100px;
             right: 20px;
-            background: rgba(0,0,0,0.88);
-            backdrop-filter: blur(12px);
-            color: #fff5e6;
-            padding: 1rem 1.5rem;
-            border-radius: 32px;
-            max-width: 270px;
-            font-size: 0.9rem;
+            background: rgba(241, 241, 241, 0.95);
+            backdrop-filter: blur(16px);
+            color: #000000;
+            padding: 1.5rem 1.8rem;
+            border-radius: 40px;
+            max-width: 320px;
+            width: auto;
+            font-size: 1rem;
             z-index: 1001;
-            box-shadow: 0 12px 28px black;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,200,0.2);
             border-left: 8px solid #ffa559;
             font-weight: 500;
-            pointer-events: none;
+            pointer-events: auto;
+            transition: all 0.2s ease;
         }
 
         .info-curso-modal h4 {
-            margin-bottom: 6px;
+            margin-bottom: 12px;
             color: #ffbd7f;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #ffa559;
+            display: inline-block;
+        }
+
+        .info-curso-modal p {
+            line-height: 1.5;
+            margin-top: 8px;
+        }
+
+        .info-curso-modal button.cerrar-modal {
+            background: #ff8c42;
+            border: none;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            margin-top: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 6px black;
+            width: 100%;
         }
 
         .oculto {
@@ -364,6 +388,7 @@ body {
             .memory-grid { gap: 10px; }
             .memory-card { font-size: 0.7rem; padding: 0.7rem 0.1rem; min-height: 70px; }
             .floating-btn { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; right: 16px; }
+            .info-curso-modal { bottom: 85px; right: 16px; max-width: 280px; padding: 1.2rem; font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -417,14 +442,12 @@ body {
         <h2>🎲 TRES JUEGOS SENSORIALES</h2>
         <p>Descubrí cómo tus sentidos despiertan emociones. ¡Interactuá!</p>
         
-        <!-- Juego 1: Encuesta -->
         <div class="juego-card">
             <h3>📋 1. Encuesta de emociones y sentidos</h3>
             <div id="encuestaContainer"></div>
             <div id="respuestaEncuesta" class="resultado-juego" style="display: none;"></div>
         </div>
 
-        <!-- Juego 2: Memoria (con volteo correcto) -->
         <div class="juego-card">
             <h3>🧠 2. Memoria de emociones & sabores</h3>
             <p>Encontrá la pareja de cada emoción con su alimento. ¡Dos cartas se voltean y si coinciden quedan!</p>
@@ -432,7 +455,6 @@ body {
             <div id="mensajeMemory" class="resultado-juego"></div>
         </div>
 
-        <!-- Juego 3: Rueda texturas -->
         <div class="juego-card">
             <h3>🎡 3. Rueda sensorial: textura → emoción</h3>
             <p>Hacé clic en una textura y descubrí qué emoción despierta.</p>
@@ -440,18 +462,20 @@ body {
             <div id="resultadoTextura" class="resultado-juego"></div>
         </div>
     </div>
-    <footer>🍽️ Taller Cocina Inclusiva · Feria de Ciencias 2026 · Educar para jóvenes y amantes de la fe</footer>
+    <footer>🍽️ Taller Cocina Inclusiva · Feria de Ciencias 2026</footer>
 </div>
 
-<!-- BOTÓN FLOTANTE + INFO CURSO ACTUALIZADA (Lunes y Viernes, Psicopedagoga) -->
+<!-- BOTÓN FLOTANTE + INFO CURSO MODIFICADA: Escuela N°8, dirección, sin cierre automático y expandido -->
 <button class="floating-btn" id="botonInfoCurso">📢</button>
 <div id="infoCursoModal" class="info-curso-modal oculto">
-    <h4>📚 Información del Curso</h4>
-    <p>✨ <strong>Días:</strong> Lunes y Viernes<br>
-    🧠 <strong>Psicopedagoga:</strong> María Gisele Bevlacqua<br>
-    🧑‍🍳 <strong>Taller:</strong> Cocina Sensitiva · Feria de Ciencias 2026<br>
-    📍 Escuela Técnica N°12 · Stand inclusivo<br>
-    🌈 “Sentidos que conectan emociones”</p>
+    <h4>📚 Escuela para Jóvenes y Adultos N°8</h4>
+    <p><strong>🏫 Dirección:</strong> Ayacucho esquina Roque Pérez, Santiago del Estero<br>
+    <strong>📅 Días:</strong> Lunes y Viernes<br>
+    <strong>🧠 Psicopedagoga:</strong> María Gisele Bevlacqua<br>
+    <strong>🍳 Taller:</strong> Cocina Sensitiva · Feria de Ciencias 2026<br>
+    <strong>🌈 Proyecto:</strong> “Sentidos que conectan emociones”<br>
+   
+    <button class="cerrar-modal" id="cerrarModalBtn">Cerrar</button>
 </div>
 
 <script>
@@ -463,7 +487,7 @@ body {
     scrollProyecto.addEventListener('click', () => seccionProyectoDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }));
     scrollJuegos.addEventListener('click', () => seccionJuegosDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }));
 
-    // --------------------- GALERÍA CON MODAL (imagen original sin pixelado) -----------------
+    // GALERÍA CON MODAL (imagen original)
     const imagenesDisponibles = [
         "WhatsApp Image 2026-05-17 at 20.20.29 (1).jpeg",
         "WhatsApp Image 2026-05-17 at 20.20.29.jpeg",
@@ -486,11 +510,10 @@ body {
             img.onerror = () => { img.src = "https://placehold.co/400x400?text=Cocina+Inclusiva"; };
             img.addEventListener('click', (e) => {
                 e.stopPropagation();
-                // Modal con la imagen a tamaño original
                 const modal = document.createElement('div');
                 modal.className = 'modal-imagen';
                 const modalImg = document.createElement('img');
-                modalImg.src = img.src; // misma ruta original
+                modalImg.src = img.src;
                 modalImg.alt = "Original";
                 modal.appendChild(modalImg);
                 modal.onclick = () => modal.remove();
@@ -502,7 +525,7 @@ body {
     }
     crearGaleriaConModal();
 
-    // ----------------- JUEGO 1: ENCUESTA -----------------
+    // JUEGO 1: ENCUESTA
     function iniciarEncuesta() {
         const preguntas = [
             { texto: "🍕 ¿Qué comida te hace sentir feliz?", opciones: ["Pizza", "Helado", "Chocolate", "Frutas"] },
@@ -528,7 +551,7 @@ body {
                 boton.className = 'opcion-boton';
                 boton.onclick = () => {
                     respuestas[idx] = op;
-                    Array.from(opcionesDiv.children).forEach(btn => btn.style.background = '#fadbb1');
+                    Array.from(opcionesDiv.children).forEach(btn => btn.style.background = 'rgba(250,219,177,0.9)');
                     boton.style.background = '#f9a95c';
                     if (respuestas.filter(r => r !== undefined).length === preguntas.length) {
                         const resDiv = document.getElementById('respuestaEncuesta');
@@ -562,13 +585,12 @@ body {
         container.appendChild(resetBtn);
     }
 
-    // ----------------- JUEGO 2: MEMORY CON GIRO DE CARTAS (se voltean dos, si coinciden quedan boca arriba) ----------------
-    let cartasMemory = [];     // { id, par, texto, tipo, emparejada, volteada }
+    // JUEGO 2: MEMORY (volteo correcto)
+    let cartasMemory = [];
     let primeraIndex = null;
     let segundaIndex = null;
     let bloqueado = false;
     let timeoutVoltear = null;
-    let memoryInicializado = false;
 
     function construirDeck() {
         const pares = [
@@ -584,7 +606,6 @@ body {
             deck.push({ id: crypto.randomUUID ? crypto.randomUUID() : Math.random()+''+idx, parId: idx, texto: par.emoji, tipo: 'emo', emparejada: false, volteada: false });
             deck.push({ id: crypto.randomUUID ? crypto.randomUUID() : Math.random()+''+idx+'_c', parId: idx, texto: par.comida, tipo: 'comida', emparejada: false, volteada: false });
         });
-        // mezclar Fisher-Yates
         for (let i = deck.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [deck[i], deck[j]] = [deck[j], deck[i]];
@@ -607,7 +628,7 @@ body {
                 cardDiv.classList.add('flipped');
             } else {
                 cardDiv.innerText = "❓";
-                cardDiv.style.background = "#f0bc7c";
+                cardDiv.style.background = "rgba(240,188,124,0.85)";
             }
             cardDiv.onclick = () => manejarClickCarta(idx);
             grid.appendChild(cardDiv);
@@ -618,11 +639,9 @@ body {
         if (bloqueado) return;
         const carta = cartasMemory[idx];
         if (carta.emparejada) return;
-        if (carta.volteada) return; // ya volteada
+        if (carta.volteada) return;
 
-        // Si no hay primera carta seleccionada
         if (primeraIndex === null) {
-            // Voltear la carta
             carta.volteada = true;
             primeraIndex = idx;
             renderMemory();
@@ -631,11 +650,9 @@ body {
             carta.volteada = true;
             segundaIndex = idx;
             renderMemory();
-            // Verificar coincidencia
             const carta1 = cartasMemory[primeraIndex];
             const carta2 = cartasMemory[segundaIndex];
             if (carta1.parId === carta2.parId) {
-                // Coinciden: quedan emparejadas y se fijan
                 carta1.emparejada = true;
                 carta2.emparejada = true;
                 carta1.volteada = false;
@@ -646,15 +663,13 @@ body {
                 const mensaje = document.getElementById('mensajeMemory');
                 mensaje.innerHTML = "🎉 ¡Pareja correcta! Sigue así.";
                 setTimeout(() => { if (mensaje) mensaje.innerHTML = ""; }, 1000);
-                // Revisar si terminó
-                const terminado = cartasMemory.every(c => c.emparejada === true);
-                if (terminado) document.getElementById('mensajeMemory').innerHTML = "🏆 ¡Ganaste el juego de memoria! 🏆";
+                if (cartasMemory.every(c => c.emparejada)) 
+                    document.getElementById('mensajeMemory').innerHTML = "🏆 ¡Ganaste el juego de memoria! 🏆";
             } else {
                 bloqueado = true;
                 const mensaje = document.getElementById('mensajeMemory');
                 mensaje.innerHTML = "❌ No coinciden, se darán vuelta en 1 segundo.";
                 timeoutVoltear = setTimeout(() => {
-                    // Volver a ocultar las dos cartas
                     cartasMemory[primeraIndex].volteada = false;
                     cartasMemory[segundaIndex].volteada = false;
                     primeraIndex = null;
@@ -683,10 +698,8 @@ body {
         segundaIndex = null;
         bloqueado = false;
         renderMemory();
-        // botón reinicio opcional
         const container = document.getElementById('memoryGrid').parentNode;
-        let resetBtnExistente = document.querySelector('#resetMemoryBtn');
-        if (!resetBtnExistente) {
+        if (!document.getElementById('resetMemoryBtn')) {
             const btnReset = document.createElement('button');
             btnReset.innerText = "🔄 Reiniciar memoria";
             btnReset.id = "resetMemoryBtn";
@@ -701,7 +714,7 @@ body {
         }
     }
 
-    // ---------- JUEGO 3: RUEDA TEXTURAS ----------
+    // JUEGO 3: RUEDA TEXTURAS
     function iniciarRueda() {
         const texturas = [
             { nombre: "🥄 Suave / Cremoso (puré)", emocion: "Calma y confort" },
@@ -730,30 +743,28 @@ body {
         container.appendChild(limpiar);
     }
 
-    // Inicializar todo
     iniciarEncuesta();
     iniciarMemory();
     iniciarRueda();
 
-    // BOTÓN FLOTANTE INFO CURSO (Lunes y Viernes + Psicopedagoga)
+    // BOTÓN FLOTANTE - MODAL EXPANDIDO, SIN CIERRE AUTOMÁTICO, CON BOTÓN DE CERRAR
     const botonInfo = document.getElementById('botonInfoCurso');
     const modalInfo = document.getElementById('infoCursoModal');
-    let timeoutModal = null;
+    const cerrarModalBtn = document.getElementById('cerrarModalBtn');
+
     botonInfo.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (modalInfo.classList.contains('oculto')) {
-            modalInfo.classList.remove('oculto');
-            if (timeoutModal) clearTimeout(timeoutModal);
-            timeoutModal = setTimeout(() => modalInfo.classList.add('oculto'), 5000);
-        } else {
-            modalInfo.classList.add('oculto');
-            if (timeoutModal) clearTimeout(timeoutModal);
-        }
+        modalInfo.classList.toggle('oculto');
     });
+
+    cerrarModalBtn.addEventListener('click', () => {
+        modalInfo.classList.add('oculto');
+    });
+
+    // Cerrar si se hace clic fuera del modal (opcional pero útil)
     document.addEventListener('click', function(event) {
         if (!modalInfo.contains(event.target) && event.target !== botonInfo && !modalInfo.classList.contains('oculto')) {
             modalInfo.classList.add('oculto');
-            if (timeoutModal) clearTimeout(timeoutModal);
         }
     });
 </script>
