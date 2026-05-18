@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Cocina Sensitiva | Feria de Ciencias 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+body {
+    font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, 'Poppins', sans-serif;
+
+    background: linear-gradient(
+        -45deg,
+        #ffcc80,
+        #ffb347,
+        #ff7043,
+        #ffd54f,
+        #aed581,
+        #8bc34a,
+        #aed581
+    );
+
+    background-size: 500% 500%;
+    min-height: 100vh;
+
+    animation: softGradient 30s ease infinite;
+
+    color: #2e241f;
+    scroll-behavior: smooth;
+}
+
+@keyframes softGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 1.5rem 1.2rem 3rem;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            margin-bottom: 1.8rem;
+        }
+
+        .logo-wrapper {
+            background: rgba(255, 245, 225, 0.75);
+            border-radius: 80px;
+            padding: 20px 15px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(3px);
+        }
+
+        .logo-img {
+            max-width: 85%;
+            width: 280px;
+            height: auto;
+            border-radius: 50px;
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1));
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .btn {
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 60px;
+            background: #ffb347;
+            color: #2c1c0f;
+            box-shadow: 0 6px 0 #a45d2e;
+            cursor: pointer;
+            transition: 0.1s linear;
+            font-family: inherit;
+            letter-spacing: 1px;
+            min-width: 140px;
+        }
+
+        .btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #a45d2e;
+        }
+
+        .btn-juegos {
+            background: #5fa7f0;
+            box-shadow: 0 6px 0 #2c4b7a;
+            color: white;
+        }
+
+        .btn-proyecto {
+            background: #f4a261;
+            box-shadow: 0 6px 0 #b4622a;
+        }
+
+        .section {
+            background: rgba(255, 255, 245, 0.94);
+            border-radius: 48px;
+            padding: 1.8rem 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+            backdrop-filter: blur(2px);
+            border: 1px solid #ffddb0;
+        }
+
+        .section h2 {
+            font-size: 1.9rem;
+            background: linear-gradient(135deg, #c2410c, #f59e0b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            border-left: 7px solid #f97316;
+            padding-left: 18px;
+        }
+
+        .section h3 {
+            font-size: 1.4rem;
+            color: #b45309;
+            margin: 1rem 0 0.6rem;
+        }
+
+        .highlight {
+            background: #fff0dd;
+            border-radius: 28px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .frase-final {
+            font-style: italic;
+            font-size: 1.35rem;
+            text-align: center;
+            background: #fce7cb;
+            padding: 1rem;
+            border-radius: 50px;
+            margin: 1.2rem 0 0.5rem;
+            color: #9b4b1e;
+            font-weight: 500;
+        }
+
+        /* Galería con grid y efecto zoom (ligthbox simple) */
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .galeria img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 28px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease;
+            border: 3px solid #ffcd94;
+            cursor: pointer;
+        }
+
+        .galeria img:active {
+            transform: scale(0.98);
+        }
+
+        /* MODAL PARA VER IMAGEN ORIGINAL */
+        .modal-imagen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+        }
+        .modal-imagen img {
+            max-width: 92%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 28px;
+            box-shadow: 0 20px 30px black;
+            border: 3px solid #ffb882;
+        }
+
+        /* juegos */
+        .juego-card {
+            background: #fff9f0;
+            border-radius: 40px;
+            padding: 1.5rem;
+            margin-top: 1.8rem;
+            box-shadow: 0 12px 22px rgba(0,0,0,0.08);
+            border-left: 12px solid #ff9f4a;
+        }
+
+        .pregunta {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 1rem 0 0.5rem;
+            color: #a1552c;
+        }
+
+        .opciones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 0.8rem 0;
+        }
+
+        .opcion-boton {
+            background: #fadbb1;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .resultado-juego {
+            background: #e9f5e1;
+            padding: 0.7rem;
+            border-radius: 24px;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        /* Memory mejorado: grid */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin: 1rem 0;
+        }
+
+        .memory-card {
+            background: #f0bc7c;
+            padding: 1rem 0.2rem;
+            text-align: center;
+            border-radius: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            font-size: 0.9rem;
+            word-break: break-word;
+            min-height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backface-visibility: hidden;
+        }
+
+        .memory-card.flipped {
+            background: #fff2df;
+            color: #a1491a;
+            transform: scale(0.98);
+        }
+
+        .memory-card.matched {
+            background: #9bc48b;
+            color: #1f4f1a;
+            cursor: default;
+            transform: scale(1);
+        }
+
+        .rueda-boton {
+            background: #ffb882;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 60px;
+            margin: 8px 6px;
+            font-weight: bold;
+            border: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem 0 0.5rem;
+            color: #5d3a1f;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Botón flotante */
+        .floating-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            background: #f97316;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 1000;
+            transition: 0.2s;
+            border: none;
+        }
+
+        .info-curso-modal {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background: rgba(0,0,0,0.88);
+            backdrop-filter: blur(12px);
+            color: #fff5e6;
+            padding: 1rem 1.5rem;
+            border-radius: 32px;
+            max-width: 270px;
+            font-size: 0.9rem;
+            z-index: 1001;
+            box-shadow: 0 12px 28px black;
+            border-left: 8px solid #ffa559;
+            font-weight: 500;
+            pointer-events: none;
+        }
+
+        .info-curso-modal h4 {
+            margin-bottom: 6px;
+            color: #ffbd7f;
+        }
+
+        .oculto {
+            display: none;
+        }
+
+        @media (max-width: 550px) {
+            .btn { font-size: 1.2rem; padding: 0.6rem 1rem; min-width: 110px; }
+            .section h2 { font-size: 1.6rem; }
+            .memory-grid { gap: 10px; }
+            .memory-card { font-size: 0.7rem; padding: 0.7rem 0.1rem; min-height: 70px; }
+            .floating-btn { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; right: 16px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <div class="logo-wrapper">
+            <img class="logo-img" src="logo.png" alt="Logo Feria de Ciencias 2026 - Cocina Sensitiva" onerror="this.src='https://placehold.co/400x200?text=Logo+Feria+de+Ciencias'">
+        </div>
+        <div class="buttons">
+            <button class="btn btn-proyecto" id="scrollProyectoBtn">📖 PROYECTO</button>
+            <button class="btn btn-juegos" id="scrollJuegosBtn">🎮 JUEGOS</button>
+        </div>
+    </div>
+
+    <!-- PROYECTO -->
+    <div id="seccionProyecto" class="section">
+        <h2>🍳 COCINA SENSORIAL & EMOCIONES</h2>
+        <p><strong>Feria de Ciencias 2026 · Taller de Cocina Inclusiva</strong></p>
+        <div class="highlight">
+            <p>✨ <strong>Fundamentación:</strong> La cocina no solo prepara alimentos, también conecta con recuerdos, texturas y aromas. Un espacio inclusivo donde cada sentido despierta emociones.</p>
+        </div>
+        <h3>🎯 Objetivos</h3>
+        <ul style="margin-left: 1.5rem; margin-bottom: 0.8rem;">
+            <li>✔ Explorar la relación sentidos-emociones mediante la cocina inclusiva.</li>
+            <li>✔ Reconocer emociones asociadas a alimentos.</li>
+            <li>✔ Fomentar expresión emocional, autonomía y habilidades sociales.</li>
+        </ul>
+        <h3>🧠 Hipótesis</h3>
+        <p>Los estímulos sensoriales en la cocina generan bienestar, favorecen la participación y evocan emociones positivas.</p>
+        <h3>👩‍🍳 Metodología</h3>
+        <p>🔸 Exploración sensorial (olfato, gusto, tacto, vista, oído)<br>
+        🔸 Cocina emocional: recetas simples asociadas a emociones (dulce = alegría)<br>
+        🔸 Juegos de tarjetas, pictogramas y utensilios adaptados.</p>
+        <h3>🌈 Resultados esperados</h3>
+        <p>Mayor participación, reconocimiento de emociones, desarrollo social y comprensión del rol de los sentidos.</p>
+        <div class="frase-final">
+            “Sentir, cocinar y emocionarse: una experiencia para todos”
+        </div>
+    </div>
+
+    <!-- GALERÍA FOTOS -->
+    <div class="section" id="galeriaSection">
+        <h2>📸 Momentos del Taller</h2>
+        <div class="galeria" id="galeriaFotos"></div>
+        <p style="font-size: 0.75rem; text-align:center; margin-top: 1rem;">Toca cualquier foto para verla en tamaño original ✨</p>
+    </div>
+
+    <!-- JUEGOS -->
+    <div id="seccionJuegos" class="section">
+        <h2>🎲 TRES JUEGOS SENSORIALES</h2>
+        <p>Descubrí cómo tus sentidos despiertan emociones. ¡Interactuá!</p>
+        
+        <!-- Juego 1: Encuesta -->
+        <div class="juego-card">
+            <h3>📋 1. Encuesta de emociones y sentidos</h3>
+            <div id="encuestaContainer"></div>
+            <div id="respuestaEncuesta" class="resultado-juego" style="display: none;"></div>
+        </div>
+
+        <!-- Juego 2: Memoria (con volteo correcto) -->
+        <div class="juego-card">
+            <h3>🧠 2. Memoria de emociones & sabores</h3>
+            <p>Encontrá la pareja de cada emoción con su alimento. ¡Dos cartas se voltean y si coinciden quedan!</p>
+            <div id="memoryGrid" class="memory-grid"></div>
+            <div id="mensajeMemory" class="resultado-juego"></div>
+        </div>
+
+        <!-- Juego 3: Rueda texturas -->
+        <div class="juego-card">
+            <h3>🎡 3. Rueda sensorial: textura → emoción</h3>
+            <p>Hacé clic en una textura y descubrí qué emoción despierta.</p>
+            <div id="ruedaTexturas"></div>
+            <div id="resultadoTextura" class="resultado-juego"></div>
+        </div>
+    </div>
+    <footer>🍽️ Taller Cocina Inclusiva · Feria de Ciencias 2026 · Educar para jóvenes y amantes de la fe</footer>
+</div>
+
+<!-- BOTÓN FLOTANTE + INFO CURSO ACTUALIZADA (Lunes y Viernes, Psicopedagoga) -->
+<button class="floating-btn" id="botonInfoCurso">📢</button>
+<div id="infoCursoModal" class="info-curso-modal oculto">
+    <h4>📚 Información del Curso</h4>
+    <p>✨ <strong>Días:</strong> Lunes y Viernes<br>
+    🧠 <strong>Psicopedagoga:</strong> María Gisele Bevlacqua<br>
+    🧑‍🍳 <strong>Taller:</strong> Cocina Sensitiva · Feria de Ciencias 2026<br>
+    📍 Escuela Técnica N°12 · Stand inclusivo<br>
+    🌈 “Sentidos que conectan emociones”</p>
+</div>
+
+<script>
+    // SCROLL SUAVE
+    const scrollProyecto = document.getElementById('scrollProyectoBtn');
+    const scrollJuegos = document.getElementById('scrollJuegosBtn');
+    const seccionProyectoDiv = document.getElementById('seccionProyecto');
+    const seccionJuegosDiv = document.getElementById('seccionJuegos');
+    scrollProyecto.addEventListener('click', () => seccionProyectoDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    scrollJuegos.addEventListener('click', () => seccionJuegosDiv.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+
+    // --------------------- GALERÍA CON MODAL (imagen original sin pixelado) -----------------
+    const imagenesDisponibles = [
+        "WhatsApp Image 2026-05-17 at 20.20.29 (1).jpeg",
+        "WhatsApp Image 2026-05-17 at 20.20.29.jpeg",
+        "WhatsApp Image 2026-05-17 at 20.20.30 (1).jpeg",
+        "WhatsApp Image 2026-05-17 at 20.20.30 (2).jpeg",
+        "WhatsApp Image 2026-05-17 at 20.20.30.jpeg",
+        "WhatsApp Image 2026-05-17 at 20.20.31 (1).jpeg",
+        "WhatsApp Image 2026-05-17 at 20.20.31 (2).jpeg",
+        "WhatsApp Image 2026-05-17 at 20.20.31 (3).jpeg",
+        "WhatsApp Image 2026-05-17 at 20.20.31.jpeg"
+    ];
+
+    function crearGaleriaConModal() {
+        const galeriaDiv = document.getElementById('galeriaFotos');
+        galeriaDiv.innerHTML = '';
+        imagenesDisponibles.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = "Taller Cocina Inclusiva";
+            img.onerror = () => { img.src = "https://placehold.co/400x400?text=Cocina+Inclusiva"; };
+            img.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Modal con la imagen a tamaño original
+                const modal = document.createElement('div');
+                modal.className = 'modal-imagen';
+                const modalImg = document.createElement('img');
+                modalImg.src = img.src; // misma ruta original
+                modalImg.alt = "Original";
+                modal.appendChild(modalImg);
+                modal.onclick = () => modal.remove();
+                document.body.appendChild(modal);
+            });
+            galeriaDiv.appendChild(img);
+        });
+        if (imagenesDisponibles.length === 0) galeriaDiv.innerHTML = '<p>📷 Pronto más imágenes</p>';
+    }
+    crearGaleriaConModal();
+
+    // ----------------- JUEGO 1: ENCUESTA -----------------
+    function iniciarEncuesta() {
+        const preguntas = [
+            { texto: "🍕 ¿Qué comida te hace sentir feliz?", opciones: ["Pizza", "Helado", "Chocolate", "Frutas"] },
+            { texto: "🌸 ¿Qué aroma te recuerda a tu infancia?", opciones: ["Vainilla", "Pan horneado", "Café", "Flores"] },
+            { texto: "🍚 ¿Qué textura de comida te gusta más?", opciones: ["Crujiente", "Suave/Cremoso", "Masticable", "Líquido"] },
+            { texto: "😢 ¿Comés distinto cuando estás triste o feliz?", opciones: ["Sí, mucho más", "Un poco", "No cambio", "Depende"] },
+            { texto: "💖 ¿Qué emoción sentiste en este stand?", opciones: ["Alegría", "Curiosidad", "Calma", "Nostalgia"] },
+            { texto: "👃 ¿Qué sentido usaste más hoy en la cocina?", opciones: ["Olfato", "Gusto", "Tacto", "Vista"] }
+        ];
+        const container = document.getElementById('encuestaContainer');
+        container.innerHTML = '';
+        let respuestas = [];
+
+        preguntas.forEach((p, idx) => {
+            const divPregunta = document.createElement('div');
+            divPregunta.className = 'pregunta';
+            divPregunta.innerText = p.texto;
+            const opcionesDiv = document.createElement('div');
+            opcionesDiv.className = 'opciones';
+            p.opciones.forEach(op => {
+                const boton = document.createElement('button');
+                boton.innerText = op;
+                boton.className = 'opcion-boton';
+                boton.onclick = () => {
+                    respuestas[idx] = op;
+                    Array.from(opcionesDiv.children).forEach(btn => btn.style.background = '#fadbb1');
+                    boton.style.background = '#f9a95c';
+                    if (respuestas.filter(r => r !== undefined).length === preguntas.length) {
+                        const resDiv = document.getElementById('respuestaEncuesta');
+                        let resumen = "✨ ¡Gracias! Tus respuestas emocionales:<br>";
+                        respuestas.forEach((resp, i) => {
+                            resumen += `📌 ${preguntas[i].texto.substring(0, 38)} → ${resp}<br>`;
+                        });
+                        resumen += "<br>❤️ La cocina sensorial despierta emociones únicas.";
+                        resDiv.innerHTML = resumen;
+                        resDiv.style.display = 'block';
+                    }
+                };
+                opcionesDiv.appendChild(boton);
+            });
+            container.appendChild(divPregunta);
+            container.appendChild(opcionesDiv);
+        });
+        const resetBtn = document.createElement('button');
+        resetBtn.innerText = "🔄 Reiniciar encuesta";
+        resetBtn.style.marginTop = "12px";
+        resetBtn.style.background = "#ffe0b5";
+        resetBtn.style.border = "none";
+        resetBtn.style.padding = "8px 16px";
+        resetBtn.style.borderRadius = "40px";
+        resetBtn.style.cursor = "pointer";
+        resetBtn.onclick = () => {
+            respuestas = [];
+            document.getElementById('respuestaEncuesta').style.display = 'none';
+            iniciarEncuesta();
+        };
+        container.appendChild(resetBtn);
+    }
+
+    // ----------------- JUEGO 2: MEMORY CON GIRO DE CARTAS (se voltean dos, si coinciden quedan boca arriba) ----------------
+    let cartasMemory = [];     // { id, par, texto, tipo, emparejada, volteada }
+    let primeraIndex = null;
+    let segundaIndex = null;
+    let bloqueado = false;
+    let timeoutVoltear = null;
+    let memoryInicializado = false;
+
+    function construirDeck() {
+        const pares = [
+            { emoji: "😊 ALEGRÍA", comida: "🍰 Pastel de chocolate" },
+            { emoji: "😢 TRISTEZA", comida: "🍲 Sopa de pollo casera" },
+            { emoji: "😡 ENOJO", comida: "🌶️ Chile picante" },
+            { emoji: "😨 MIEDO", comida: "🍄 Hongos misteriosos" },
+            { emoji: "😌 CALMA", comida: "🍵 Té de manzanilla" },
+            { emoji: "🤢 ASCO", comida: "🥦 Brócoli hervido" }
+        ];
+        let deck = [];
+        pares.forEach((par, idx) => {
+            deck.push({ id: crypto.randomUUID ? crypto.randomUUID() : Math.random()+''+idx, parId: idx, texto: par.emoji, tipo: 'emo', emparejada: false, volteada: false });
+            deck.push({ id: crypto.randomUUID ? crypto.randomUUID() : Math.random()+''+idx+'_c', parId: idx, texto: par.comida, tipo: 'comida', emparejada: false, volteada: false });
+        });
+        // mezclar Fisher-Yates
+        for (let i = deck.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [deck[i], deck[j]] = [deck[j], deck[i]];
+        }
+        return deck;
+    }
+
+    function renderMemory() {
+        const grid = document.getElementById('memoryGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        cartasMemory.forEach((carta, idx) => {
+            const cardDiv = document.createElement('div');
+            cardDiv.className = 'memory-card';
+            if (carta.emparejada) {
+                cardDiv.innerText = carta.texto;
+                cardDiv.classList.add('matched');
+            } else if (carta.volteada) {
+                cardDiv.innerText = carta.texto;
+                cardDiv.classList.add('flipped');
+            } else {
+                cardDiv.innerText = "❓";
+                cardDiv.style.background = "#f0bc7c";
+            }
+            cardDiv.onclick = () => manejarClickCarta(idx);
+            grid.appendChild(cardDiv);
+        });
+    }
+
+    function manejarClickCarta(idx) {
+        if (bloqueado) return;
+        const carta = cartasMemory[idx];
+        if (carta.emparejada) return;
+        if (carta.volteada) return; // ya volteada
+
+        // Si no hay primera carta seleccionada
+        if (primeraIndex === null) {
+            // Voltear la carta
+            carta.volteada = true;
+            primeraIndex = idx;
+            renderMemory();
+        } 
+        else if (segundaIndex === null && primeraIndex !== idx) {
+            carta.volteada = true;
+            segundaIndex = idx;
+            renderMemory();
+            // Verificar coincidencia
+            const carta1 = cartasMemory[primeraIndex];
+            const carta2 = cartasMemory[segundaIndex];
+            if (carta1.parId === carta2.parId) {
+                // Coinciden: quedan emparejadas y se fijan
+                carta1.emparejada = true;
+                carta2.emparejada = true;
+                carta1.volteada = false;
+                carta2.volteada = false;
+                primeraIndex = null;
+                segundaIndex = null;
+                renderMemory();
+                const mensaje = document.getElementById('mensajeMemory');
+                mensaje.innerHTML = "🎉 ¡Pareja correcta! Sigue así.";
+                setTimeout(() => { if (mensaje) mensaje.innerHTML = ""; }, 1000);
+                // Revisar si terminó
+                const terminado = cartasMemory.every(c => c.emparejada === true);
+                if (terminado) document.getElementById('mensajeMemory').innerHTML = "🏆 ¡Ganaste el juego de memoria! 🏆";
+            } else {
+                bloqueado = true;
+                const mensaje = document.getElementById('mensajeMemory');
+                mensaje.innerHTML = "❌ No coinciden, se darán vuelta en 1 segundo.";
+                timeoutVoltear = setTimeout(() => {
+                    // Volver a ocultar las dos cartas
+                    cartasMemory[primeraIndex].volteada = false;
+                    cartasMemory[segundaIndex].volteada = false;
+                    primeraIndex = null;
+                    segundaIndex = null;
+                    renderMemory();
+                    bloqueado = false;
+                    if (mensaje) mensaje.innerHTML = "";
+                }, 1000);
+            }
+        }
+    }
+
+    function reiniciarMemory() {
+        if (timeoutVoltear) clearTimeout(timeoutVoltear);
+        cartasMemory = construirDeck();
+        primeraIndex = null;
+        segundaIndex = null;
+        bloqueado = false;
+        renderMemory();
+        document.getElementById('mensajeMemory').innerHTML = "";
+    }
+
+    function iniciarMemory() {
+        cartasMemory = construirDeck();
+        primeraIndex = null;
+        segundaIndex = null;
+        bloqueado = false;
+        renderMemory();
+        // botón reinicio opcional
+        const container = document.getElementById('memoryGrid').parentNode;
+        let resetBtnExistente = document.querySelector('#resetMemoryBtn');
+        if (!resetBtnExistente) {
+            const btnReset = document.createElement('button');
+            btnReset.innerText = "🔄 Reiniciar memoria";
+            btnReset.id = "resetMemoryBtn";
+            btnReset.style.marginTop = "12px";
+            btnReset.style.background = "#ffe0b5";
+            btnReset.style.border = "none";
+            btnReset.style.padding = "8px 16px";
+            btnReset.style.borderRadius = "40px";
+            btnReset.style.cursor = "pointer";
+            btnReset.onclick = reiniciarMemory;
+            container.appendChild(btnReset);
+        }
+    }
+
+    // ---------- JUEGO 3: RUEDA TEXTURAS ----------
+    function iniciarRueda() {
+        const texturas = [
+            { nombre: "🥄 Suave / Cremoso (puré)", emocion: "Calma y confort" },
+            { nombre: "🍪 Crujiente (galleta)", emocion: "Alegría y energía" },
+            { nombre: "🍬 Pegajoso / Gomoso", emocion: "Diversión y nostalgia" },
+            { nombre: "🥑 Aterciopelado (aguacate)", emocion: "Plenitud y frescura" },
+            { nombre: "🍚 Granulado / Arenoso", emocion: "Curiosidad o sorpresa" }
+        ];
+        const container = document.getElementById('ruedaTexturas');
+        container.innerHTML = '';
+        texturas.forEach(t => {
+            const btn = document.createElement('button');
+            btn.innerText = t.nombre;
+            btn.className = 'opcion-boton rueda-boton';
+            btn.onclick = () => {
+                const resDiv = document.getElementById('resultadoTextura');
+                resDiv.innerHTML = `✨ Textura: ${t.nombre} → despierta <strong>${t.emocion}</strong>. ¿La sentiste alguna vez? 🧡`;
+                resDiv.style.background = "#ffe2bf";
+            };
+            container.appendChild(btn);
+        });
+        const limpiar = document.createElement('button');
+        limpiar.innerText = "Limpiar mensaje";
+        limpiar.className = 'opcion-boton';
+        limpiar.onclick = () => { document.getElementById('resultadoTextura').innerHTML = ""; };
+        container.appendChild(limpiar);
+    }
+
+    // Inicializar todo
+    iniciarEncuesta();
+    iniciarMemory();
+    iniciarRueda();
+
+    // BOTÓN FLOTANTE INFO CURSO (Lunes y Viernes + Psicopedagoga)
+    const botonInfo = document.getElementById('botonInfoCurso');
+    const modalInfo = document.getElementById('infoCursoModal');
+    let timeoutModal = null;
+    botonInfo.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (modalInfo.classList.contains('oculto')) {
+            modalInfo.classList.remove('oculto');
+            if (timeoutModal) clearTimeout(timeoutModal);
+            timeoutModal = setTimeout(() => modalInfo.classList.add('oculto'), 5000);
+        } else {
+            modalInfo.classList.add('oculto');
+            if (timeoutModal) clearTimeout(timeoutModal);
+        }
+    });
+    document.addEventListener('click', function(event) {
+        if (!modalInfo.contains(event.target) && event.target !== botonInfo && !modalInfo.classList.contains('oculto')) {
+            modalInfo.classList.add('oculto');
+            if (timeoutModal) clearTimeout(timeoutModal);
+        }
+    });
+</script>
+</body>
+</html>
